@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid - Complete Visual Guide</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header> <h1>CSS Grid Complete Guide</h1> <p class="subtitle">Master CSS Grid Layout with interactive examples. Click buttons to see grid properties in action!</p>
+        </header>
+        
+        <div class="grid-container"> <!-- Basic Grid Properties -->
+            <div class="section">
+                <h2>Grid Container Basics</h2>
+                
+                <p class="property-name">display: grid</p>
+                <p>Creates a grid container. All direct children become grid items.</p>
+                
+                <div class="demo-grid grid-lines" id="demo1">
+                    <div class="grid-item">1</div>
+                    <div class="grid-item">2</div>
+                    <div class="grid-item">3</div>
+                    <div class="grid-item">4</div>
+                    <div class="grid-item">5</div>
+                    <div class="grid-item">6</div>
+                </div>
+                
+                <p class="property-name">grid-template-columns</p>
+                <p>Defines the columns of the grid.</p>
+                
+                <div class="controls">
+                    <button class="btn active" onclick="setGridTemplate('equal')">Equal Columns</button>
+                    <button class="btn" onclick="setGridTemplate('fixed')">Fixed Width</button>
+                    <button class="btn" onclick="setGridTemplate('mixed')">Mixed Sizes</button>
+                    <button class="btn" onclick="setGridTemplate('fraction')">Fraction Units</button>
+                    <button class="btn" onclick="setGridTemplate('repeat')">Repeat Function</button>
+                </div>
+                
+                <p class="property-name">grid-template-rows</p>
+                <p>Defines the rows of the grid.</p>
+                
+                <div class="controls">
+                    <button class="btn active" onclick="setGridRows('auto')">Auto Rows</button>
+                    <button class="btn" onclick="setGridRows('fixed')">Fixed Rows</button>
+                    <button class="btn" onclick="setGridRows('mixed')">Mixed Heights</button>
+                </div>
+                
+                <div class="code-block" id="containerCode">
+                    .container {<br>
+                    &nbsp;&nbsp;display: grid;<br>
+                    &nbsp;&nbsp;grid-template-columns: repeat(3, 1fr);<br>
+                    &nbsp;&nbsp;grid-template-rows: auto;<br>
+                    }
+                </div>
+            </div>
+            
+            <!-- Gap and Alignment -->
+            <div class="section">
+                <h2>Gaps & Alignment</h2>
+                
+                <p class="property-name">gap (grid-gap)</p>
+                <p>Sets the gaps (gutters) between rows and columns.</p>
+                
+                <div class="controls">
+                    <button class="btn active" onclick="setGap('none')">No Gap</button>
+                    <button class="btn" onclick="setGap('small')">Small Gap</button>
+                    <button class="btn" onclick="setGap('medium')">Medium Gap</button>
+                    <button class="btn" onclick="setGap('large')">Large Gap</button>
+                    <button class="btn" onclick="setGap('different')">Different Gaps</button>
+                </div>
+                
+                <div class="demo-grid" id="demo2">
+                    <div class="grid-item">1</div>
+                    <div class="grid-item">2</div>
+                    <div class="grid-item">3</div>
+                    <div class="grid-item">4</div>
+                    <div class="grid-item">5</div>
+                    <div class="grid-item">6</div>
+                </div>
+                
+                <p class="property-name">justify-items & align-items</p>
+                <p>Aligns grid items along the row and column axes.</p>
+                
+                <div class="controls">
+                    <button class="btn active" onclick="setItemAlignment('stretch')">Stretch</button>
+                    <button class="btn" onclick="setItemAlignment('start')">Start</button>
+                    <button class="btn" onclick="setItemAlignment('center')">Center</button>
+                    <button class="btn" onclick="setItemAlignment('end')">End</button>
+                </div>
+                
+                <div class="demo-grid" id="demo3">
+                    <div class="grid-item">1</div>
+                    <div class="grid-item">2</div>
+                    <div class="grid-item">3</div>
+                    <div class="grid-item">4</div>
+                </div>
+                
+                <div class="explanation">
+                    <p><strong>Note:</strong> <span class="highlight">justify-items</span> aligns horizontally, <span class="highlight">align-items</span> aligns vertically. Use <span class="highlight">place-items</span> shorthand.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grid-container">
+            <!-- Item Placement -->
+            <div class="section">
+                <h2>Item Placement</h2>
+                
+                <p class="property-name">grid-column & grid-row</p>
+                <p>Controls where items are placed using line numbers.</p>
+                
+                <div class="controls">
+                    <button class="btn active" onclick="setItemPlacement('default')">Default</button>
+                    <button class="btn" onclick="setItemPlacement('span')">Span Columns</button>
+                    <button class="btn" onclick="setItemPlacement('position')">Specific Position</button>
+                    <button class="btn" onclick="setItemPlacement('full')">Full Width</button>
+                </div>
+                
+                <div class="demo-grid" id="demo4" style="grid-template-columns: repeat(4, 1fr);">
+                    <div class="grid-item">1</div>
+                    <div class="grid-item">2</div>
+                    <div class="grid-item">3</div>
+                    <div class="grid-item">4</div>
+                    <div class="grid-item">5</div>
+                    <div class="grid-item">6</div>
+                </div>
+                
+                <p class="property-name">grid-area</p>
+                <p>Shorthand for grid-row-start, grid-column-start, grid-row-end, and grid-column-end.</p>
+                
+                <div class="controls">
+                    <button class="btn" onclick="setGridArea('simple')">Simple Area</button>
+                    <button class="btn" onclick="setGridArea('complex')">Complex Area</button>
+                </div>
+                
+                <div class="code-block" id="itemCode">
+                    .item-1 {<br>
+                    &nbsp;&nbsp;grid-column: 1 / 3; /* Start at line 1, end at line 3 */<br>
+                    &nbsp;&nbsp;grid-row: 1 / 2;<br>
+                    }<br><br>
+                    
+                    .item-2 {<br>
+                    &nbsp;&nbsp;grid-area: 1 / 3 / 3 / 4; /* row-start / col-start / row-end / col-end */<br>
+                    }
+                </div>
+            </div>
+            
+            <!-- Template Areas -->
+            <div class="section">
+                <h2>Template Areas</h2>
+                
+                <p class="property-name">grid-template-areas</p>
+                <p>Creates visual layout using named areas.</p>
+                
+                <div class="area-visualizer" id="areaVisualizer">
+                    <div class="area-cell header">header</div>
+                    <div class="area-cell header">header</div>
+                    <div class="area-cell header">header</div>
+                    <div class="area-cell header">header</div>
+                    <div class="area-cell sidebar">sidebar</div>
+                    <div class="area-cell main">main</div>
+                    <div class="area-cell main">main</div>
+                    <div class="area-cell main">main</div>
+                    <div class="area-cell footer">footer</div>
+                    <div class="area-cell footer">footer</div>
+                    <div class="area-cell footer">footer</div>
+                    <div class="area-cell footer">footer</div>
+                </div>
+                
+                <div class="controls">
+                    <button class="btn active" onclick="setTemplateAreas('basic')">Basic Layout</button>
+                    <button class="btn" onclick="setTemplateAreas('complex')">Complex Layout</button>
+                    <button class="btn" onclick="setTemplateAreas('responsive')">Responsive</button>
+                </div>
+                
+                <div class="demo-grid" id="demo5" style="height: 350px;">
+                    <div class="grid-item" style="background: #4dabf7;">Header</div>
+                    <div class="grid-item" style="background: #ff6b6b;">Sidebar</div>
+                    <div class="grid-item" style="background: #51cf66;">Main Content</div>
+                    <div class="grid-item" style="background: #ffd43b; color: #333;">Footer</div>
+                </div>
+                
+                <div class="code-block" id="areaCode">
+                    .container {<br>
+                    &nbsp;&nbsp;grid-template-areas:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"header header header header"<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"sidebar main main main"<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"footer footer footer footer";<br>
+                    }<br><br>
+                    
+                    .header { grid-area: header; }<br>
+                    .sidebar { grid-area: sidebar; }<br>
+                    .main { grid-area: main; }<br>
+                    .footer { grid-area: footer; }
+                </div>
+            </div>
+        </div>
+        <!-- Advanced Grid -->
+        <div class="section">
+            <h2>Advanced Grid Features</h2>
+            
+            <div class="grid-container" style="grid-template-columns: 1fr 1fr; gap: 25px;">
+                <div>
+                    <p class="property-name">Auto Placement</p>
+                    <p>Controls how auto-placed items flow in the grid.</p>
+                    
+                    <div class="controls">
+                        <button class="btn active" onclick="setAutoPlacement('row')">Row (default)</button>
+                        <button class="btn" onclick="setAutoPlacement('column')">Column</button>
+                        <button class="btn" onclick="setAutoPlacement('dense')">Dense Packing</button>
+                    </div>
+                    
+                    <div class="demo-grid" id="demo6" style="grid-template-columns: repeat(3, 1fr);">
+                        <div class="grid-item" style="grid-column: span 2;">1 (span 2)</div>
+                        <div class="grid-item">2</div>
+                        <div class="grid-item">3</div>
+                        <div class="grid-item">4</div>
+                        <div class="grid-item" style="grid-column: span 2;">5 (span 2)</div>
+                        <div class="grid-item">6</div>
+                    </div>
+                </div>
+                
+                <div>
+                    <p class="property-name">Justify-content & Align-content</p>
+                    <p>Aligns the entire grid within its container.</p>
+                    
+                    <div class="controls">
+                        <button class="btn active" onclick="setContentAlignment('stretch')">Stretch</button>
+                        <button class="btn" onclick="setContentAlignment('center')">Center</button>
+                        <button class="btn" onclick="setContentAlignment('space')">Space Between</button>
+                    </div>
+                    
+                    <div class="demo-grid" id="demo7" style="height: 250px; grid-template-columns: repeat(2, 100px);">
+                        <div class="grid-item">1</div>
+                        <div class="grid-item">2</div>
+                        <div class="grid-item">3</div>
+                        <div class="grid-item">4</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="explanation" style="margin-top: 20px;">
+                <p><strong>Pro Tip:</strong> Use <span class="highlight">minmax(min, max)</span> for responsive grids: <code>grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));</code></p>
+            </div>
+        </div>
+        
+        <!-- Real World Example -->
+        <div class="section">
+            <h2>Real World Example: Photo Gallery</h2>
+            
+            <div class="demo-grid" id="photoGallery" style="grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); grid-auto-rows: 150px; gap: 10px; padding: 10px;">
+                <div class="grid-item" style="background: #ff6b6b; grid-row: span 2;">Portrait</div>
+                <div class="grid-item" style="background: #4dabf7;">Square</div>
+                <div class="grid-item" style="background: #51cf66; grid-column: span 2;">Wide</div>
+                <div class="grid-item" style="background: #ffd43b;">Square</div>
+                <div class="grid-item" style="background: #9775fa;">Square</div>
+                <div class="grid-item" style="background: #ff922b; grid-row: span 2;">Portrait</div>
+                <div class="grid-item" style="background: #20c997;">Square</div>
+                <div class="grid-item" style="background: #da77f2; grid-column: span 2;">Wide</div>
+            </div>
+            
+            <div class="code-block">
+                /* Responsive photo gallery with CSS Grid */<br>
+                .gallery {<br>
+                &nbsp;&nbsp;display: grid;<br>
+                &nbsp;&nbsp;grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));<br>
+                &nbsp;&nbsp;grid-auto-rows: 150px;<br>
+                &nbsp;&nbsp;gap: 10px;<br>
+                }<br><br>
+                
+                .portrait {<br>
+                &nbsp;&nbsp;grid-row: span 2;<br>
+                }<br><br>
+                
+                .wide {<br>
+                &nbsp;&nbsp;grid-column: span 2;<br>
+                }
+            </div>
+        </div>
+        
+        <footer>
+           <p>with ❤️ elahesabetinia</p>
+        </footer>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
